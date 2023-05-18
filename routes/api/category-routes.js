@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
     res.status(200).json(categories);
   } catch (error) {
     console.error(error);
-    res.status(500).json(err);
+    res.status(500).json(error);
   }
 });
 
@@ -27,13 +27,12 @@ router.get('/:id', async (req, res) => {
       include: [{ model: Product }]
     });
     if (!category) {
-      res.status(404).json({ message: 'Category not found'});
-      return;
+      return res.status(404).json({ message: 'Category not found'});
     }
     res.status(200).json(category);
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 
@@ -43,10 +42,10 @@ router.post('/', async (req, res) => {
     const {category_name} = req.body;
     const newCategory = await Category.create({category_name});
 
-    res.status(201).json(newCategory);
+    return res.status(201).json(newCategory);
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 
@@ -60,14 +59,13 @@ router.put('/:id', async (req, res) => {
       {where: {id: categoryId}}
     );
     if (updatedRows[0] === 0) {
-      res.status(404).json({message: 'Category not found'});
-      return;
+      return res.status(404).json({message: 'Category not found'});
     }
 
-    res.status(200).json({message: 'Category updated successfully'});
+    return res.status(200).json({message: 'Category updated successfully'});
   } catch (error) {
     console.error(error);
-    res.status(500).json(error);
+    return res.status(500).json(error);
   }
 });
 
