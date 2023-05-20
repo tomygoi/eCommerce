@@ -20,7 +20,7 @@ This application contains a mySQL database and a backend for an E-commerce platf
 - Use `npm run seed` to seed the database
 - Use `npm run start` to start the server
 ## Recordings 
-eCommerceWalkthrough.mp4
+https://github.com/tomygoi/eCommerce/assets/120353691/688a9474-67cc-4db6-a43e-dcbf54242a96
 ## Credit
 - https://docs.oracle.com/en-us/iaas/mysql-database/doc/getting-started.html 
 - https://sequelize.org/docs/v6/getting-started/ 
